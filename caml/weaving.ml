@@ -54,11 +54,27 @@ and fill_warp (canvas: Canvas.canvas)
 let print_solution (canvas: Canvas.canvas) =
   Printf.printf "Solution:\n%s\n" (Canvas.to_string canvas)
 
-let () =
-  let max_warp_at_a_run = 15 in
-  let max_weft_at_a_run = 5 in
-  let canvas = Canvas.load_canvas "data/real.data" max_weft_at_a_run in
+let solve (filename: string) (max_warp_at_a_run: int) (max_weft_at_a_run: int) =
+  let canvas = Canvas.load_canvas filename max_weft_at_a_run in
   let () = Printf.printf "Canvas:\n%s\n" (Canvas.to_string canvas) in
   let results = fill_warp canvas max_warp_at_a_run canvas.warp [] in
   let () = Core.Std.List.iter results ~f:print_solution in
   Core.Std.printf "Number of solutions: %d\n" (List.length results)
+
+let spec =
+  let open Core.Std.Command.Spec in empty
+    +> flag "max-warp-at-a-run" (optional_with_default 5 int)
+      ~doc:"Maximum number of threads in a column"
+    +> flag "max-weft-at-a-run" (optional_with_default 5 int)
+      ~doc:"Maximum number of threads in a row"
+    +> anon ("filename" %: file)
+
+let command =
+  Core.Std.Command.basic
+    ~summary:"Solve weaving problem"
+    ~readme:(fun () -> "Pass an input and wait for wonder!")
+    spec
+    (fun max_warp_at_a_run max_weft_at_a_run filename () ->
+        solve filename max_warp_at_a_run max_weft_at_a_run)
+
+let () = Core.Std.Command.run ~version:"0.0.1" ~build_info:"MCL" command

@@ -1,4 +1,3 @@
-
 (* Returns |true| if row failed check, |false| otherwise *)
 val check_row : Row.row -> bool
 

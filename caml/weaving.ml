@@ -48,18 +48,17 @@ and fill_warp (canvas: Canvas.canvas)
     let continuations = fill_row last_filled_row warp 0 in
     let map_helper = fun row_info ->
       let row, warp = row_info in
-      fill_warp canvas max_at_a_run warp (row :: rows)
-    in
+      fill_warp canvas max_at_a_run warp (row :: rows) in
     List.concat (Core.Std.List.map ~f:map_helper continuations)
 
 let print_solution (canvas: Canvas.canvas) =
   Printf.printf "Solution:\n%s\n" (Canvas.to_string canvas)
 
 let () =
-  let max_warp_at_a_run = 5 in
+  let max_warp_at_a_run = 15 in
   let max_weft_at_a_run = 5 in
   let canvas = Canvas.load_canvas "data/real.data" max_weft_at_a_run in
   let () = Printf.printf "Canvas:\n%s\n" (Canvas.to_string canvas) in
   let results = fill_warp canvas max_warp_at_a_run canvas.warp [] in
-  let () = Core.Std.printf "Number of solutions: %d\n" (List.length results) in
-  Core.Std.List.iter results ~f:print_solution
+  let () = Core.Std.List.iter results ~f:print_solution in
+  Core.Std.printf "Number of solutions: %d\n" (List.length results)

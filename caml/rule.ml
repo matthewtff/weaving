@@ -23,12 +23,11 @@ let has_two_in_a_row (columns: Cell.cell list list) =
   let number_of_columns = List.length columns in
   let first_column: Cell.cell list = List.nth columns 0 in
   let last_column: Cell.cell list = List.nth columns (number_of_columns - 1) in
-  let columns_to_check = [first_column; last_column] in
-  List.exists (check_at_a_run 1) columns_to_check
+  List.exists (check_at_a_run 1) [first_column; last_column]
 
 let check_columns (rows: Row.row list) (max_at_a_run: int) =
   if List.length rows = 0 then false
   else
     let columns = transpose (List.map Row.get_cells rows) in
-    if has_two_in_a_row columns then false
+    if has_two_in_a_row columns then true
     else List.exists (check_at_a_run max_at_a_run) columns

@@ -10,11 +10,14 @@ let get_cells (r: row) = r.cells
 let get_length (r: row) = List.length r.cells
 
 let use_weft (r: row) (color: int option) (shift: int) =
+  let weft_color = if r.weft_color = None then color else r.weft_color in
   let map_helper = fun index (cell: Cell.cell) ->
-    if index != shift then cell
-    else { color = cell.color; index = Some Cell.Upper }
-  in { max_at_a_run = r.max_at_a_run; weft_color = color;
-       cells = Core.Std.List.mapi r.cells ~f:map_helper }
+    if cell.index = Some Cell.Upper then
+      { Cell.color = weft_color; index = cell.index }
+    else if index != shift then cell
+    else { Cell.color = color; index = Some Cell.Upper } in
+  { max_at_a_run = r.max_at_a_run; weft_color = weft_color;
+    cells = Core.Std.List.mapi r.cells ~f:map_helper }
 
 let use_warp (r: row) (shift: int) =
   let map_helper = fun index (cell: Cell.cell) ->

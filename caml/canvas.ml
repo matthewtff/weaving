@@ -7,6 +7,21 @@ type canvas = {
 
 (* Internal functions *)
 
+let upper_cell = { Cell.color = None; index = Some Cell.Upper }
+let lower_cell = { Cell.color = None; index = Some Cell.Lower }
+
+let with_border (modulo: int) (index: int) (row: Row.row) =
+  let cell = if index mod 2 = modulo then upper_cell else lower_cell in
+  let new_cells = cell :: row.cells @ [cell] in
+  { Row.max_at_a_run = row.max_at_a_run; weft_color = row.weft_color;
+    cells = new_cells }
+
+let append_borders (modulo: int) (canvas: canvas) =
+  { width = canvas.width + 2; height = canvas.height;
+    rows = Core.Std.List.mapi ~f:(with_border modulo) canvas.rows;
+    warp = None :: canvas.warp @ [ None ]
+  }
+
 let rec generate_warp (width: int) (warp: int option list) =
   match width with
     | 0 -> warp
@@ -44,6 +59,9 @@ let load_canvas (filename: string) (max_at_a_run: int) =
     rows = rows;
     warp = warp
   }
+
+let make_even (canvas : canvas) = append_borders 0 canvas
+let make_odd (canvas : canvas) = append_borders 1 canvas
 
 let to_string (c: canvas) =
   let rows_strings = Core.Std.List.map ~f:Row.to_string c.rows in

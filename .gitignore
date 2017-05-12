@@ -5,8 +5,12 @@ __pycache__/
 
 _build/
 
-# corebuild natives
+# corebuild natives & byte-code binaries
 *.native
+*.byte
+
+# vim swap files
+.*.swp
 
 # C extensions
 *.so

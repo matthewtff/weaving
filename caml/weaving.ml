@@ -5,7 +5,7 @@ let get_warp_color (warp: int option list) (index: int) =
 
 let color_warp (warp: int option list) (new_color: int option) (shift: int) =
   let map_helper = fun (index: int) (current_color: int option) ->
-    if index != shift then current_color
+    if index <> shift then current_color
     else new_color
   in Core.Std.List.mapi warp ~f:map_helper
 
@@ -40,13 +40,13 @@ and fill_row (row: Row.row) (warp: int option list) (shift: int) =
     (weft_branch row warp shift) @ (warp_branch row warp shift)
 
 and fill_warp (canvas: Canvas.canvas)
-              (max_at_a_run: int)
               (warp: int option list)
               (rows: Row.row list) =
   let row_index = List.length rows in
-  if Rule.check_columns rows max_at_a_run then []
+  if Rule.check_columns rows canvas.max_warp_at_a_run then []
   else if row_index = canvas.height then [{
-      Canvas.width = canvas.width; height = canvas.height;
+      Canvas.max_warp_at_a_run = canvas.max_warp_at_a_run;
+      width = canvas.width; height = canvas.height;
       rows = List.rev rows; warp = warp
     }]
   else
@@ -54,17 +54,16 @@ and fill_warp (canvas: Canvas.canvas)
     let continuations = fill_row last_filled_row warp 0 in
     let map_helper = fun row_info ->
       let row, warp = row_info in
-      fill_warp canvas max_at_a_run warp (row :: rows) in
+      fill_warp canvas warp (row :: rows) in
     List.concat (Core.Std.List.map ~f:map_helper continuations)
 
 let print_solution (canvas: Canvas.canvas) =
   Printf.printf "Solution:\n%s\n" (Canvas.to_string canvas)
 
 let solve_canvas (message: string)
-                 (canvas: Canvas.canvas)
-                 (max_warp_at_a_run: int) =
+                 (canvas: Canvas.canvas) =
   let () = Printf.printf "Solving canvas:\n%s\n" (Canvas.to_string canvas) in
-  let results = fill_warp canvas max_warp_at_a_run canvas.warp [] in
+  let results = fill_warp canvas canvas.warp [] in
   let number_of_results = List.length results in
   if number_of_results = 0 then 0
   else
@@ -73,23 +72,33 @@ let solve_canvas (message: string)
     let () = Printf.printf "Number of solutions: %d\n" number_of_results in
     number_of_results
 
-let solve_with_borders (canvas: Canvas.canvas) (max_warp_at_a_run: int) =
-  let number_of_even_solutions = solve_canvas
-    "Even solver" (Canvas.make_even canvas) max_warp_at_a_run in
-  let number_of_odd_solutions = solve_canvas
-    "Odd solver" (Canvas.make_odd canvas) max_warp_at_a_run in
+let solve_with_borders (canvas: Canvas.canvas) =
+  let number_of_even_solutions =
+    solve_canvas "Even solver" (Canvas.make_even canvas) in
+  let number_of_odd_solutions =
+    solve_canvas "Odd solver" (Canvas.make_odd canvas) in
   number_of_even_solutions + number_of_odd_solutions
 
 let solve (filename: string) (max_warp_at_a_run: int) (max_weft_at_a_run: int) =
-  let canvas = Canvas.load_canvas filename max_weft_at_a_run in
-  if solve_canvas "Initial solver" canvas max_warp_at_a_run != 0 then ()
+  let canvas =
+    Canvas.load_canvas filename max_warp_at_a_run max_weft_at_a_run in
+  if solve_canvas "Initial solver" canvas <> 0 then ()
   else
     let () = Printf.printf "%s\n%s\n" "No solution" "Solving with borders..." in
-    let number_of_solutions = solve_with_borders canvas max_warp_at_a_run in
+    let number_of_solutions = solve_with_borders canvas in
     if number_of_solutions = 0 then
       let () = Printf.printf "%s" "No solutions found\n" in exit 1
     else Printf.printf "Total number of solutions: %d\n" number_of_solutions
 
+let check_solved_canvas (filename: string)
+                        (max_warp_at_a_run: int)
+                        (max_weft_at_a_run: int) =
+  let canvas = Canvas.load_solved_canvas
+    filename max_warp_at_a_run max_weft_at_a_run in
+  if (Canvas.self_check canvas) then
+    Printf.printf "%s" "Solution is wrong!"
+  else
+    Printf.printf "%s" "Correct solution!"
 
 let spec =
   let open Core.Std.Command.Spec in empty
@@ -97,6 +106,8 @@ let spec =
       ~doc:"Maximum number of threads in a column"
     +> flag "max-weft-at-a-run" (optional_with_default 5 int)
       ~doc:"Maximum number of threads in a row"
+    +> flag "check-solution" no_arg
+      ~doc:"Passed file contains solved canvas. Check for overruns"
     +> anon ("filename" %: file)
 
 let command =
@@ -104,7 +115,10 @@ let command =
     ~summary:"Solve weaving problem"
     ~readme:(fun () -> "Pass an input and wait for wonder!")
     spec
-    (fun max_warp_at_a_run max_weft_at_a_run filename () ->
-        solve filename max_warp_at_a_run max_weft_at_a_run)
+    (fun max_warp_at_a_run max_weft_at_a_run check_solution filename () ->
+      match check_solution with
+        | true ->
+          check_solved_canvas filename max_warp_at_a_run max_weft_at_a_run
+        | false -> solve filename max_warp_at_a_run max_weft_at_a_run)
 
 let () = Core.Std.Command.run ~version:"0.0.1" ~build_info:"MCL" command

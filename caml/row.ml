@@ -14,21 +14,26 @@ let use_weft (r: row) (color: int option) (shift: int) =
   let map_helper = fun index (cell: Cell.cell) ->
     if cell.index = Some Cell.Upper then
       { Cell.color = weft_color; index = cell.index }
-    else if index != shift then cell
+    else if index <> shift then cell
     else { Cell.color = color; index = Some Cell.Upper } in
   { max_at_a_run = r.max_at_a_run; weft_color = weft_color;
     cells = Core.Std.List.mapi r.cells ~f:map_helper }
 
 let use_warp (r: row) (shift: int) =
   let map_helper = fun index (cell: Cell.cell) ->
-    if index != shift then cell
+    if index <> shift then cell
     else { color = cell.color; index = Some Cell.Lower }
   in { max_at_a_run = r.max_at_a_run; weft_color = r.weft_color;
        cells = Core.Std.List.mapi r.cells ~f:map_helper }
-
 
 let to_string (r: row) =
   let weft_color_string: string = Cell.color_to_string r.weft_color in
   let cells_strings = Core.Std.List.map ~f:Cell.to_string r.cells in
   let cells_string = String.concat ", " cells_strings in
-  Printf.sprintf "[ %s | %s ]" weft_color_string cells_string
+  Printf.sprintf "%s | %s" weft_color_string cells_string
+
+let of_string (max_at_a_run: int) (text: string) =
+  let [weft_color_text; cells_text] = Core.Std.String.split ~on:'|' text in
+  let cells_texts = Core.Std.String.split ~on:',' cells_text in
+  { max_at_a_run; weft_color = Cell.string_to_color weft_color_text;
+    cells = Core.Std.List.map ~f:Cell.of_string cells_texts }

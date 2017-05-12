@@ -9,3 +9,6 @@ val get_color : cell -> int
 
 val color_to_string : int option -> string
 val to_string : cell -> string
+
+val string_to_color : string -> int option
+val of_string : string -> cell

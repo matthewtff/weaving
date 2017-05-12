@@ -9,6 +9,13 @@ let index_to_string (index: z_index option) =
     | Some Upper -> "^"
     | None -> "*"
 
+let string_to_index (text: string) =
+  let stripped_text = Core.Std.String.strip text in
+  match text with
+    | "v" -> Some Lower
+    | "^" -> Some Upper
+    | _ -> None
+
 (* Public functions *)
 
 let is_lower (c: cell) =
@@ -23,7 +30,7 @@ let is_upper (c: cell) =
 
 let is_filled (c: cell) =
   match c.color with
-  | Some _ -> c.index != None
+  | Some _ -> c.index <> None
   | None -> false
 
 let get_index (c: cell) =
@@ -45,3 +52,12 @@ let to_string (c: cell) =
   let color_string: string = color_to_string c.color in
   let index_string_list: string list = [index_to_string c.index] in
   String.concat ":" (color_string :: index_string_list)
+
+let string_to_color (text: string) =
+  let stripped_text = Core.Std.String.strip text in
+  if stripped_text = "None" then None
+  else Some (Core.Std.Int.of_string stripped_text)
+
+let of_string (text: string) =
+  let [color_str; index_str] = Core.Std.String.split ~on:':' text in
+  { color = string_to_color color_str; index = string_to_index index_str }

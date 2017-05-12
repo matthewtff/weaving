@@ -8,3 +8,4 @@ val use_weft : row -> int option -> int -> row
 val use_warp : row -> int -> row
 
 val to_string : row -> string
+val of_string : int -> string -> row

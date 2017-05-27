@@ -1,6 +1,6 @@
 .scheme_block
 {
-	 min-width:700px;
+	 min-width:910px;
 
 }
 
@@ -141,9 +141,17 @@
 
  }
 
+ .add_row
+ {
+ 	cursor: pointer;
+ 	border-radius: 100px;
+ 	background-color: green;
+ 	color: #fff;
+ }
 
 
-.num_warp:nth-child(5n)
+
+.num_warp:nth-child(5n), .num_weft:nth-child(5n) 
 {
 	color: #000;
 	border-right: 1px solid black;
@@ -165,4 +173,12 @@
 .weft_flex
 {
 	width:20px;
+	vertical-align: top;
+		margin-right: -2px;
+
+}
+.weft_flex>.cell:first-child
+{
+	width:20px;
+
 }

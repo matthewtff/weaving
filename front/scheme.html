@@ -8,18 +8,67 @@
   <link href="css/cell.css" rel="stylesheet">
   <link href="css/colors.css" rel="stylesheet">
   <link href="css/insts.css" rel="stylesheet">
+  <link href="css/sch.css" rel="stylesheet">
   
  </head>
  <body>
 	 <div class="container">
   	 	<div class="row">
-  	 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+  			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  				<div class="w_header">
+	  				<div class="dropdown">
+					  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					    Вход
+					    
+					  </button>
+					  <div class="dropdown-menu right_side" aria-labelledby="dropdownMenu1">
+					    <input>
+					    <button>Enter</button>
+					  </div>
+					</div>
+					<div class="btn-toolbar" role="toolbar" aria-label="...">
+					  <div class="btn-group" role="group" aria-label="...">
+					  	<button type="button" class="btn btn-default" aria-label="Left Align">
+						  RU
+						</button>
+						<button type="button" class="btn btn-default" aria-label="Left Align">
+						  EN
+						</button>
+					</div>
+				</div>
+				</div>	
+  			</div>
+  		</div>
+  	 	<div class="row">
+  	 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ">
+  	 			<div style="background-color:red;">menu & ads</div> 
+  	 		</div>
+  	 		<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 ">
+  	 			<div class="jumbotron">
+				  <h1>Качество Ткачества</h1>
+				  <p>Сервис проектирования схем для бранного двухуточного ткачества</p>
+				  
+				</div>
+  	 			<div class="row"><!--tabs-->
+				  	<div class="btn-group btn-group-justified" role="group" aria-label="...">
+					  <div class="btn-group" role="group">
+					    <button type="button" class="btn btn-default active">Схема</button>
+					  </div>
+					  <div class="btn-group" role="group">
+					    <button type="button" class="btn btn-default">Предварительный просмотр</button>
+					  </div>
+					  <div class="btn-group" role="group">
+					    <button type="button" class="btn btn-default">Параметры</button>
+					  </div>
+					   <div class="btn-group" role="group">
+					    <button type="button" class="btn btn-default">Отчет</button>
+					  </div>
+					</div>
+				 </div><!--tabs-->
 
+				<div class="tab_inner"><!-- Тут должен быть див, который будет подложкой для внутренних табиков-->
 
-
-  	 			<div class="row">
-  	 				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 scheme_block"><!--schema block-->
-	  	 				<div class="row">
+				 <div class="row">
 	  	 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "><!--control pannel-->
 	  	 						<div class="btn-toolbar" role="toolbar" aria-label="...">
 								  <div class="btn-group" role="group" aria-label="...">
@@ -32,266 +81,307 @@
 									<button type="button" class="btn btn-default" aria-label="Left Align">
 									  <span class="glyphicon glyphicon glyphicon-scissors" aria-hidden="true"></span>
 									</button>
-
-
+									<button type="button" class="btn btn-default" aria-label="Left Align">
+									  <span class="glyphicon glyphicon glyphicon-copy" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn btn-default" aria-label="Left Align">
+									  <span class="glyphicon glyphicon glyphicon-copy" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn btn-default" aria-label="Left Align">
+									  <span class="glyphicon glyphicon glyphicon-copy" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn btn-default" aria-label="Left Align">
+									  <span class="glyphicon glyphicon glyphicon-copy" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn btn-default" aria-label="Left Align">
+									  <span class="glyphicon glyphicon glyphicon-copy" aria-hidden="true"></span>
+									</button>
 
 								  </div>
-								  
-								</div>
-	  	 					</div><!--control pannel-->
-	  	 				</div>
-	  	 				<div class="row">
-	  	 					<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 scheme_col" style="min-width: 30px;"><!--threading-->
+								  <div class="btn-group" role="group">
+								    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								      Размер схемы
+								      <span class="caret"></span>
+								    </button>
+								    <div class="dropdown-menu">
+								       <p>По вертикали <input> рядов</p>
+									   <p>По горизонтали <input> рядов</p>
+									   <button type="button" class="btn btn-default">Применить</button>
+								    </div>
+								  </div>
+								  <div class="btn-group" role="group">
+								    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								      Ограничения
+								      <span class="caret"></span>
+								    </button>
+								    <div class="dropdown-menu">
+								    	<p>Подряд не больше </p>
+									    <p><input> нитей утка</p>
+									    <p><input> нитей основы</p>
+									    <button type="button" class="btn btn-default">Применить</button>
 
-	  	 						<div class="row">
-						  	 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-								  	 	<div class="drawdown">	
+								    </div>
+								  </div>
+								  <div class="btn-group" role="group">
+								    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								      Палитра
+								      <span class="caret"></span>
+								    </button>
+								    <div class="dropdown-menu">
+								    	<div class="drawdown">	
 								  	 		<div class="cell_row">
 												<div class="cell color_blue"></div>
 												<div class="cell color_red"></div>
 												<div class="cell color_green"></div>
-												<div class="cell color_blue"></div>
-												<div class="cell color_green"></div>
-												<div class="cell color_red"></div>
-												<div class="cell color_green"></div>
+
 											</div>
 										</div>
-						  	 		</div>
-						  	 	</div>
 
-
-	  	 						<div class="row">
-						  	 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-						  	 			<div class="cell_row">
-											<div class="cell num_warp">1</div>
-											<div class="cell num_warp">2</div>
-											<div class="cell num_warp">3</div>
-											<div class="cell num_warp">4</div>
-											<div class="cell num_warp">5</div>
-											<div class="cell num_warp">6</div>
-											<div class="cell num_warp">7</div>
-											<div class="cell num_warp">8</div>
-											<div class="cell num_warp">9</div>
-											<div class="cell num_warp">10</div>
-											<div class="cell num_warp">11</div>
-											<div class="cell num_warp">12</div>
-										</div>
-						  	 		</div>
-						  	 	</div>
-
-	  	 						<div class="row">
-						  	 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-
-			  	 						<div class="threading">
-									    	<div class="cell_row">
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>	
-												<div class="t_cell">
-													<div class="point"></div>
-												</div>	
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>	
-											</div>
-											<div class="cell_row">
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>	
-												<div class="t_cell">
-													<div class="point"></div>
-												</div>	
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>	
-											</div>
-											<div class="cell_row">
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>	
-												<div class="t_cell">
-													<div class="point"></div>
-												</div>	
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>	
-											</div>
-
-										</div>
-									</div>
+								    </div>
+								  </div>
 								</div>
-
-								<div class="row">
-						  	 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-										<div class="drawdown">
-									    	<div class="cell_row">
-												<div class="cell c_warp"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>	
-												<div class="cell c_warp"></div>	
-												<div class="cell c_weft"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>
-
-												<div class="cell c_warp"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>	
-												<div class="cell c_warp"></div>	
-												<div class="cell c_weft"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>
+	  	 					</div><!--control pannel-->
+	  	 				</div>
 
 
-												<div class="cell c_warp"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>	
-												<div class="cell c_warp"></div>	
-												<div class="cell c_weft"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>
-												<div class="cell c_warp"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>	
-												<div class="cell c_warp"></div>	
-												<div class="cell c_weft"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>
-												<div class="cell c_warp"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>	
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>
-												<div class="cell c_warp"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>	
-												<div class="cell c_warp"></div>	
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp">1</div>	
-											</div>
-											<div class="cell_row">
-												<div class="cell c_warp"></div>
-												<div class="cell c_warp"></div>	
-												<div class="cell c_warp"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>	
-												<div class="cell c_warp"></div>	
-												<div class="cell c_weft"></div>
-											</div>
-											<div class="cell_row">
-												<div class="cell c_weft"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>	
-												<div class="cell c_warp"></div>	
-												<div class="cell c_weft"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>	
-											</div>
-											<div class="cell_row">
-												<div class="cell c_weft"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>	
-												<div class="cell c_warp"></div>	
-												<div class="cell c_weft"></div>
-												<div class="cell c_weft"></div>
-												<div class="cell c_warp"></div>	
-											</div>
-										</div>
-
-
-									</div>
-								</div>
-							
-	  	 					</div><!--threading-->
-	  	 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 scheme_col">
-	  	 						
-
-	  	 						<div class="row weft_side">
-						  	 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "><!--tie-up-->
-
-			  	 						<div class="tie_up">
-									    	<div class="cell_row">
-												<div class="t_cell"></div>	
-												<div class="t_cell">
-													<div class="point"></div>
-												</div>	
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>
-											</div>
-											<div class="cell_row">
-												<div class="t_cell"></div>	
-												<div class="t_cell">
-													<div class="point"></div>
-												</div>	
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>
-											</div>
-											<div class="cell_row">
-												<div class="t_cell"></div>	
-												<div class="t_cell"></div>	
-												<div class="t_cell"></div>
-												<div class="t_cell">
-													<div class="point"></div>
+  	 			<div class="row">
+  	 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 scheme_block"><!--schema block-->
+  	 					
+	  	 				<div class="row"><!--sch.html-->
+	  	 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	  	 						<div class="sch_wrapper">
+									<div class="left_b">
+										<div class="inner_field">
+											<div class="drawdown">	
+									  	 		<div class="cell_row">
+													<div class="cell color_blue"></div>
+													<div class="cell color_red"></div>
+													<div class="cell color_green"></div>
+													<div class="cell color_blue"></div>
+													<div class="cell color_green"></div>
+													<div class="cell color_red"></div>
+													<div class="cell color_green"></div>
 												</div>
 											</div>
+											<div class="drawdown">
+												<div class="cell_row">
+													<div class="cell num_warp">1</div>
+													<div class="cell num_warp">2</div>
+													<div class="cell num_warp">3</div>
+													<div class="cell num_warp">4</div>
+													<div class="cell num_warp">5</div>
+													<div class="cell num_warp">6</div>
+													<div class="cell num_warp">7</div>
+													<div class="cell num_warp">8</div>
+													<div class="cell num_warp">9</div>
+													<div class="cell num_warp">10</div>
+													<div class="cell num_warp">11</div>
+													<div class="cell num_warp">12</div>
+													<div class="cell num_warp">
+														<div class=" add_row">+</div>
+													</div>
+												</div>
+											</div>
+											<div class="threading">
+										    	<div class="cell_row">
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>	
+													<div class="t_cell">
+														<div class="point"></div>
+													</div>	
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>	
+												</div>
+												<div class="cell_row">
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>	
+													<div class="t_cell">
+														<div class="point"></div>
+													</div>	
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>	
+												</div>
+												<div class="cell_row">
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>	
+													<div class="t_cell">
+														<div class="point"></div>
+													</div>	
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>	
+												</div>
+
+											</div>
+											<div class="drawdown" style="margin-top:4px;">
+										    	<div class="cell_row">
+													<div class="cell c_warp"></div>
+													<div class="cell c_weft"></div>
+													<div class="cell c_warp"></div>	
+													<div class="cell c_warp"></div>	
+													<div class="cell c_weft"></div>
+													<div class="cell c_weft"></div>
+													<div class="cell c_warp"></div>
+
+													<div class="cell c_warp"></div>
+													<div class="cell c_weft"></div>
+
+														
+												</div>
+												<div class="cell_row">
+													<div class="cell c_warp"></div>
+													<div class="cell c_warp"></div>	
+													<div class="cell c_warp"></div>
+													<div class="cell c_weft"></div>
+													<div class="cell c_warp"></div>	
+													<div class="cell c_warp"></div>	
+													<div class="cell c_weft"></div>
+												</div>
+												<div class="cell_row">
+													<div class="cell c_weft"></div>
+													<div class="cell c_weft"></div>
+													<div class="cell c_warp"></div>	
+													<div class="cell c_warp"></div>	
+													<div class="cell c_weft"></div>
+													<div class="cell c_weft"></div>
+													<div class="cell c_warp"></div>	
+												</div>
+												<div class="cell_row">
+													<div class="cell c_weft"></div>
+													<div class="cell c_weft"></div>
+													<div class="cell c_warp"></div>	
+													<div class="cell c_warp"></div>	
+													<div class="cell c_weft"></div>
+													<div class="cell c_weft"></div>
+													<div class="cell c_warp"></div>	
+												</div>
+											</div>
+
+
+
+
+									</div><!--inner_field-->
+
+									</div>
+								<div class="right_b">
+										<div class="weft_side">
+											<div class="tie_up">
+										    	<div class="cell_row">
+													<div class="t_cell"></div>	
+													<div class="t_cell">
+														<div class="point"></div>
+													</div>	
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>	
+													<div class="t_cell">
+														<div class="point"></div>
+													</div>	
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>
+												</div>
+												<div class="cell_row">
+													<div class="t_cell"></div>	
+													<div class="t_cell">
+														<div class="point"></div>
+													</div>	
+													<div class="t_cell"></div>
+													<div class="t_cell"></div>
+												</div>
+												<div class="cell_row">
+													<div class="t_cell"></div>	
+													<div class="t_cell"></div>	
+													<div class="t_cell"></div>
+													<div class="t_cell">
+														<div class="point"></div>
+													</div>
+												</div>
+											</div>
+											<div class="threadling" >
+										    	<div class="threadling_inner">
+											    	<div class="cell_row">
+														<div class="t_cell"></div>	
+														<div class="t_cell">
+															<div class="point"></div>
+														</div>	
+														<div class="t_cell"></div>
+														<div class="t_cell"></div>
+
+													</div>
+													<div class="cell_row">
+														<div class="t_cell"></div>	
+														<div class="t_cell">
+															<div class="point"></div>
+														</div>	
+														<div class="t_cell"></div>
+														<div class="t_cell"></div>
+														
+													</div>
+
+												</div><!--threadling_inner-->
+												<div class="weft_flex">
+													<div class="cell num_weft">1</div>
+													<div class="cell num_weft">2</div>
+													<div class="cell num_weft">3</div>
+													<div class="cell num_weft">4</div>
+													<div class="cell num_weft">5</div>
+													<div class="cell num_weft">
+														<div class=" add_row">+</div>
+													</div>
+												</div>
+												<div class="weft_flex">
+													<div class="cell color_red"></div>
+													<div class="cell color_green"></div>
+													<div class="cell color_red"></div>
+													<div class="cell color_blue"></div>
+												</div>
+											</div>
+
+
 										</div>
 									</div>
 								</div>
+	  	 					</div>
+	  	 				</div><!--sch.html-->
 
-								<div class="row">
-						  	 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-
-
-										<div class="threadling">
-									    	<div class="cell_row">
-												<div class="t_cell"></div>	
-												<div class="t_cell">
-													<div class="point"></div>
-												</div>	
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>
-												<div class="cell color_blue"></div>
-												<div class="cell num_weft">1</div>
-											</div>
-											<div class="cell_row">
-												<div class="t_cell"></div>	
-												<div class="t_cell">
-													<div class="point"></div>
-												</div>	
-												<div class="t_cell"></div>
-												<div class="t_cell"></div>
-												<div class="cell color_red"></div>
-												<div class="cell num_weft">2</div>
-											</div>
-										</div>
-
-
-									</div>
-								</div>
-
-
-
-
-
-
-
-	  	 					</div><!--tie-up-->
-	  	 				</div>
-	  	 			
-  	 				
 
 
   	 				</div><!--schema block-->
-  	 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 "><!--instr block-->
+  	 				<!--<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 ">
   	 					
-  	 				</div><!--instr block-->
+						<div class="panel panel-default">
+						  <div class="panel-body">
+						    <h4>Палитра </h4>
+						    
+						    
+						  </div>
+						</div>
+						
+
+  	 				</div>-->
+  	 			</div>
+  	 			<div class="row">
+  	 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><!--buttons-->
+  	 					<button type="button" class="btn btn-default">Построить схему</button>
+  	 					<button type="button" class="btn btn-default">Показать случайную схему</button>
+  	 				</div>
   	 			</div>
 
 
+  	 		</div><!-- Тут должен быть див, который будет подложкой для внутренних табиков-->
 
-
-
-  	 		</div><!--12 cols-->
+  	 		</div><!--11 cols-->
   	   </div><!--row-->	
+		<div class="row">
+  			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  				I'm a footer
+  			</div>
+  		</div>
   	</div><!--container-->
 
 

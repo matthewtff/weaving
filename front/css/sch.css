@@ -1,0 +1,40 @@
+.sch_wrapper
+{
+	width: 100%;
+	white-space: nowrap;
+}
+
+
+.left_b
+{
+	width: 80%;
+	max-width: 600px;
+	display:inline-block;
+	margin: 0 0 0 10px;
+	padding: 10px 0px;
+	text-align: right;
+	vertical-align: top;
+	overflow: auto;
+	position: relative;
+
+}
+
+.right_b
+{
+/*	width:19%;*/
+	min-width: 200px;
+	display:inline-block;
+	margin: 0;
+	padding: 10px 0px;
+	vertical-align: top;
+}
+
+
+.inner_field
+{
+	display: flex;
+	flex-flow: row-reverse wrap;
+	margin-right:0px;
+	width:600px;
+}
+

@@ -1,0 +1,47 @@
+body
+{
+	background-color: #fdfff7;
+	min-width: 1010px;
+}
+hr
+{
+	color: #4c4f4c;
+}
+
+.gray
+{
+	color: gray;
+	font-size: 0.99em;
+}
+
+.row
+{
+	margin-top: 10px;
+}
+
+.tab_inner
+{
+	background: #f9ffe2;
+    border-radius: 2px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+	padding: 10px;
+}
+
+.w_header
+{
+	display: flex; 
+	flex-direction: row-reverse;
+}
+
+.w_footer
+{
+	text-align: center;
+}
+
+.right_side
+{
+
+    left: -140px; 
+    right: 0;
+    
+}

@@ -1,0 +1,184 @@
+.scheme_block
+{
+	 min-width:910px;
+
+}
+
+.cell, .t_cell
+{
+	min-width: 20px;
+	height: 20px;
+	display: inline-block;
+	background-color: #eee;
+	/*cursor: pointer;*/
+
+	margin-right: 0px;
+	padding: 0;
+
+}
+
+.cell:first-child, .t_cell:first-child, .threadling_inner>.cell_row>.t_cell, .threadling_inner>.cell_row>.cell, .tie_up>.cell_row>.t_cell
+{
+	margin-right: -4px;
+}
+
+.c_empty, .t_cell
+{
+	border: 1px solid gray;
+}
+
+.t_cell
+{
+	background-color: #c7c7c7;
+}
+
+.cell:hover, .t_cell:hover, .c_active
+{
+	border: 1px solid blue;
+}
+
+.c_weft
+{
+	border-bottom: 1px solid rgba(0,0,0,0.8);
+	border-top: 1px solid rgba(0,0,0,0.8);
+}
+
+.c_warp
+{
+	border-left: 1px solid rgba(0,0,0,0.8);
+	border-right: 1px solid rgba(0,0,0,0.8);
+}
+
+.cell_row
+{
+
+	margin-bottom: -5px;
+	padding: 0;
+	width:auto;
+	height:25px;
+	overflow: visible;
+
+	
+	
+
+}
+
+.drawdown, .threading
+{
+	border: 1px solid gray;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	padding-right: 4px;	
+	background-color: #fff;
+	overflow: visible;
+	display:block;
+	width: 100%;
+
+	
+}
+.drawdown>.cell_row, .threading>.cell_row
+{
+	display: flex; 
+	flex-flow: row-reverse nowrap;
+	overflow: visible;
+	
+}
+.tie_up, .threadling
+{
+	text-align: left;
+	border: 1px solid gray;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+	display: block;
+	background-color: #fff;
+	display:block;
+	width: 100%;
+	margin-top:4px;
+
+}
+
+.point
+{
+	width: 65%;
+	height: 65%;
+	border-radius: 65%;
+	background-color: rgb(50,12,12);
+	margin:18%;
+}
+
+.scheme_col
+{
+	padding:0;
+	margin: 0;
+
+}
+
+
+.num_warp, .num_weft
+{
+	
+	background-color: transparent;
+	color:gray;
+	border-right: 1px solid gray;
+	border-left: 1px solid gray;
+	user-select: none;
+	margin: 0px;
+	text-align: center;
+
+}
+
+
+ .num_weft
+ {
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	border-right: none;
+	border-left: none;
+	font-size: 13px;
+	vertical-align: top;
+	padding-top:2px;
+
+
+ }
+
+ .add_row
+ {
+ 	cursor: pointer;
+ 	border-radius: 100px;
+ 	background-color: green;
+ 	color: #fff;
+ }
+
+
+
+.num_warp:nth-child(5n), .num_weft:nth-child(5n) 
+{
+	color: #000;
+	border-right: 1px solid black;
+	border-left: 1px solid black;
+
+}
+.weft_side
+{
+	margin-top: 44px;
+}
+
+.weft_flex, .threadling_inner
+{
+	display: inline-flex;
+	flex-direction:column;
+	margin-right: 0px;
+
+}
+.weft_flex
+{
+	width:20px;
+	vertical-align: top;
+		margin-right: -2px;
+
+}
+.weft_flex>.cell:first-child
+{
+	width:20px;
+
+}
